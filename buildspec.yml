@@ -9,7 +9,7 @@ version: 0.2
 env:
   variables:
     AWS_DEFAULT_REGION: "ap-southeast-1"
-    IMAGE_REPO_NAME: "cobagan"
+    IMAGE_REPO_NAME: "samplephpecr"
     IMAGE_TAG: "latest"
     AWS_ACCOUNT_ID: "645758838294"
 
@@ -17,10 +17,10 @@ phases:
   pre_build:
     commands:
       - echo Logging in to Amazon ECR...
-      - $(aws ecr get-login --region ap-southeast-1)
+      - $(aws ecr get-login --region $AWS_DEFAULT_REGION)
   build:
     commands:
-      - echo Build started on `date`
+      - echo Build started
       - echo Building the Docker image...
       - docker build -t $IMAGE_REPO_NAME .
       - docker tag $IMAGE_REPO_NAME:$IMAGE_TAG $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/$IMAGE_REPO_NAME:$IMAGE_TAG
