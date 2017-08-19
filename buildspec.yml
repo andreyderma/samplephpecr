@@ -1,11 +1,17 @@
 version: 0.2
 
-AWS_DEFAULT_REGION         - ap-southeast-1
 # AWS_PROF        - AWS Profile name       (e.g. central-account)
 # IMAGE_REPO_NAME - Name of the image repo (e.g. my-app)
 # IMAGE_TAG       - Tag for the image      (e.g. latest)
 # AWS_ACCOUNT_ID  - Remote AWS account id  (e.g. 555555555555)
 
+
+env:
+  variables:
+    AWS_DEFAULT_REGION: "ap-southeast-1"
+    IMAGE_REPO_NAME: "andreyphpecs"
+    IMAGE_TAG: "latest"
+    AWS_ACCOUNT_ID: "645758838294"
 
 phases:
   pre_build:
