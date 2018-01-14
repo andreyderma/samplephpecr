@@ -1,0 +1,46 @@
+Description: >
+  Create ECS Service for Blue/Green Deployment on ECS. For further reference, please review BluegreenRepo ==> https://github.com/awslabs/ecs-blue-green-deployment
+
+Parameters:
+  DesiredCount:
+    Type: Number
+    Default: 0
+
+  Cluster:
+    Type: String
+
+  Image:
+    Type: String
+
+  Role:
+    Type: String
+
+  TargetGroupArn:
+    Type: String
+
+
+Resources:
+
+  Service:
+    Type: AWS::ECS::Service
+    Properties:
+      Cluster: !Ref Cluster
+      Role: !Ref Role
+      DesiredCount: !Ref DesiredCount
+      TaskDefinition: !Ref TaskDefinition
+      LoadBalancers:
+        - ContainerName: simple-app
+          ContainerPort: 80
+          TargetGroupArn: !Ref TargetGroupArn
+
+  TaskDefinition:
+    Type: AWS::ECS::TaskDefinition
+    Properties:
+      #Family: !Sub ${AWS::StackName}-simple-app
+      Family: Service
+      ContainerDefinitions:
+        - Name: simple-app
+          Image: !Ref Image
+          Memory: 512
+          PortMappings:
+            - ContainerPort: 80
