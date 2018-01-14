@@ -23,9 +23,6 @@ Resources:
       Cluster: !Ref Cluster
       DesiredCount: !Ref DesiredCount
       TaskDefinition: !Ref TaskDefinition
-      LoadBalancers:
-        - ContainerName: simple-app
-          ContainerPort: 80
 
   TaskDefinition:
     Type: AWS::ECS::TaskDefinition
