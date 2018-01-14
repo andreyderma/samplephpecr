@@ -35,7 +35,7 @@ Resources:
           Memory: 512
           PortMappings:
             - ContainerPort: 80
-            - HostPort: 80
+          Essential: true
 
         - Name: busybox
           Image: busybox
