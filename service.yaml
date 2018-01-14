@@ -4,16 +4,25 @@ Description: >
 Parameters:
   DesiredCount:
     Type: Number
-    Default: 0
+    Default: 1
 
   Cluster:
-    Type: String
+      Type: AWS::ECS::Cluster
+      Properties:
+        ClusterName: ClusterName
 
   Image:
     Type: String
 
   Role:
     Type: String
+
+  Repository:
+      Type: String
+
+  Tag:
+      Type: String
+      Default: latest
 
 
 Resources:
@@ -22,7 +31,6 @@ Resources:
     Type: AWS::ECS::Service
     Properties:
       Cluster: !Ref Cluster
-      Role: !Ref Role
       DesiredCount: !Ref DesiredCount
       TaskDefinition: !Ref TaskDefinition
       LoadBalancers:
@@ -36,7 +44,7 @@ Resources:
       Family: Service
       ContainerDefinitions:
         - Name: simple-app
-          Image: !Ref Image
+          Image: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${Repository}:${Tag}
           Memory: 512
           PortMappings:
             - ContainerPort: 80
