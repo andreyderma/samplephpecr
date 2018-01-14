@@ -6,11 +6,6 @@ Parameters:
     Type: Number
     Default: 1
 
-  Cluster:
-      Type: AWS::ECS::Cluster
-      Properties:
-        ClusterName: ClusterName
-
   Image:
     Type: String
 
@@ -48,3 +43,8 @@ Resources:
           Memory: 512
           PortMappings:
             - ContainerPort: 80
+
+  Cluster:
+        Type: AWS::ECS::Cluster
+        Properties:
+          ClusterName: ClusterName
