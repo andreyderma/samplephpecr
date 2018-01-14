@@ -34,20 +34,10 @@ Resources:
           Image: !Sub ${AWS::AccountId}.dkr.ecr.${AWS::Region}.amazonaws.com/${Repository}:${Tag}
           Memory: 512
           PortMappings:
+            - HostPort: 80
             - ContainerPort: 80
           Essential: true
 
-        - Name: busybox
-          Image: busybox
-          EntryPoint:
-            - sh
-            - -c
-          Essential: false
-          Memory: 128
-          VolumesFrom:
-            - SourceContainer: simple-app
-          Command:
-            - /bin/sh -c "while true; do /bin/date > /var/www/my-vol/date; sleep 1; done"
 
       Volumes:
         - Name: my-vol
