@@ -15,9 +15,6 @@ Parameters:
   Role:
     Type: String
 
-  TargetGroupArn:
-    Type: String
-
 
 Resources:
 
@@ -31,7 +28,6 @@ Resources:
       LoadBalancers:
         - ContainerName: simple-app
           ContainerPort: 80
-          TargetGroupArn: !Ref TargetGroupArn
 
   TaskDefinition:
     Type: AWS::ECS::TaskDefinition
