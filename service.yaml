@@ -5,7 +5,7 @@ Parameters:
   DesiredCount:
     Type: Number
     Default: 1
-    
+
   Repository:
       Type: String
       Default: samplephpecr
@@ -42,4 +42,4 @@ Resources:
   Cluster:
         Type: AWS::ECS::Cluster
         Properties:
-          ClusterName: ClusterName
+          ClusterName: !Ref AWS::StackName
