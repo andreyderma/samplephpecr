@@ -40,4 +40,4 @@ Resources:
   Cluster:
         Type: AWS::ECS::Cluster
         Properties:
-          ClusterName: !Ref AWS::StackName
+          ClusterName: ClusterName
