@@ -5,15 +5,10 @@ Parameters:
   DesiredCount:
     Type: Number
     Default: 1
-
-  Image:
-    Type: String
-
-  Role:
-    Type: String
-
+    
   Repository:
       Type: String
+      Default: samplephpecr
 
   Tag:
       Type: String
