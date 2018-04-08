@@ -10,7 +10,6 @@ env:
   variables:
     AWS_DEFAULT_REGION: "ap-southeast-1"
     IMAGE_REPO_NAME: "samplephpecr"
-    IMAGE_TAG: $(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
     IMAGE_TAG_LATEST: "latest"
     AWS_ACCOUNT_ID: "645758838294"
 
@@ -19,6 +18,7 @@ phases:
     commands:
       - echo Logging in to Amazon ECR...
       - $(aws ecr get-login --region $AWS_DEFAULT_REGION --no-include-email)
+      - IMAGE_TAG: $(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
   build:
     commands:
       - echo Build started
