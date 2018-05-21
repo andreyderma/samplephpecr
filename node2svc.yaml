@@ -6,7 +6,7 @@ metadata:
     run: my-node-2
 spec:
   ports:
-  - port: 3001
+  - port: 80
     protocol: TCP
   selector:
     run: my-node-2
