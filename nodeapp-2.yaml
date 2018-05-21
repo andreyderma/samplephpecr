@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-node-2
+spec:
+  selector:
+    matchLabels:
+      run: my-node-2
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        run: my-node-2
+    spec:
+      containers:
+      - name: my-node-2
+        image: andreyderma/nodejs-kube-2
+        ports:
+        - containerPort: 3000
