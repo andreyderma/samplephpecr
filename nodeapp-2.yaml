@@ -16,4 +16,4 @@ spec:
       - name: my-node-2
         image: andreyderma/nodejs-kube-2
         ports:
-        - containerPort: 3000
+        - containerPort: 3001
