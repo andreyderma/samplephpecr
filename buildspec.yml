@@ -17,7 +17,7 @@ phases:
   pre_build:
     commands:
       - echo Starting...
-      - $(docker login --username andreyderma --password konankjogress)
+      - $(docker login --username andreyderma --password-stdin konankjogress)
       - IMAGE_TAG=$(echo $CODEBUILD_RESOLVED_SOURCE_VERSION | cut -c 1-7)
   build:
     commands:
