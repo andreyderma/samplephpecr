@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-MAINTAINER AWS Tutorial Series
+MAINTAINER Andrey Derma
 
 # Update and install apache
 RUN apt-get update 
